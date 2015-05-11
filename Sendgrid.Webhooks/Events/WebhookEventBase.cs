@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using Sendgrid.Webhooks.Service;
 
 namespace Sendgrid.Webhooks.Events
 {
@@ -9,5 +11,8 @@ namespace Sendgrid.Webhooks.Events
 
         [JsonProperty("email")]
         public string Email { get; set; }
+
+        [JsonProperty("category"), JsonConverter(typeof(WebhookCategoryConverter))]
+        public IList<string> Category { get; set; }
     }
 }

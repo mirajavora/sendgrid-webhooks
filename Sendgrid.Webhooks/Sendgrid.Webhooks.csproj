@@ -45,9 +45,16 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Converters\GenericListCreationJsonConverter.cs" />
+    <Compile Include="Converters\WebhookCategoryConverter.cs" />
+    <Compile Include="Events\DeliveryEventBase.cs" />
+    <Compile Include="Events\EngagementEventBase.cs" />
+    <Compile Include="Events\ProcessedEvent.cs" />
     <Compile Include="Events\WebhookEventBase.cs" />
     <Compile Include="Events\WebhookEventType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Converters\WebhookJsonConverter.cs" />
+    <Compile Include="Service\WebhookParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
