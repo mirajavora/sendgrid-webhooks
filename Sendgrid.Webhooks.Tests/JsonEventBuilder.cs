@@ -22,6 +22,66 @@ namespace Sendgrid.Webhooks.Tests
             return this;
         }
 
+        public JsonEventBuilder AppendBounce()
+        {
+            AppendString(ReadContent("bounce.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendClick()
+        {
+            AppendString(ReadContent("click.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendDeferred()
+        {
+            AppendString(ReadContent("deferred.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendDelivered()
+        {
+            AppendString(ReadContent("delivered.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendDrop()
+        {
+            AppendString(ReadContent("drop.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendGroupResubscribe()
+        {
+            AppendString(ReadContent("group_resubscribe.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendGroupUnsubscribe()
+        {
+            AppendString(ReadContent("group_unsubscribe.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendOpen()
+        {
+            AppendString(ReadContent("open.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendSpamReport()
+        {
+            AppendString(ReadContent("spamreport.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendUnsubscribe()
+        {
+            AppendString(ReadContent("unsubscribe.json"));
+            return this;
+        }
+
         public string Build()
         {
             builder.Append("]");
