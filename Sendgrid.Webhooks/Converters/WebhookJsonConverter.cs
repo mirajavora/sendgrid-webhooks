@@ -9,7 +9,7 @@ namespace Sendgrid.Webhooks.Converters
 {
     public class WebhookJsonConverter : JsonConverter
     {
-        private static readonly string[] KnownProperties = {"event", "email", "category", "timestamp", "ip", "useragent"};
+        private static readonly string[] KnownProperties = {"event", "email", "category", "timestamp", "ip", "useragent", "type", "reason", "url"};
 
         private static readonly IDictionary<string, Type> TypeMapping = new Dictionary<string, Type>()
         {
@@ -19,7 +19,7 @@ namespace Sendgrid.Webhooks.Converters
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-
+            throw new NotImplementedException("The webhook json converter does not support write");
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
@@ -37,9 +37,7 @@ namespace Sendgrid.Webhooks.Converters
             Type type = TypeMapping[eventName.ToString()];
             WebhookEventBase webhookItem = (WebhookEventBase)jsonObject.ToObject(type, serializer);
 
-
             AddUnmappedPropertiesAsUnique(webhookItem, jsonObject);
-
             return webhookItem;
         }
 
