@@ -11,6 +11,12 @@ namespace Sendgrid.Webhooks.Converters
     {
         private static readonly string[] KnownProperties = {"event", "email", "category", "timestamp", "ip", "useragent"};
 
+        private static readonly IDictionary<string, Type> TypeMapping = new Dictionary<string, Type>()
+        {
+            {"processed", typeof (ProcessedEvent)},
+            {"bounce", typeof (BounceEvent)},
+        };
+
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
 
@@ -20,7 +26,17 @@ namespace Sendgrid.Webhooks.Converters
             JsonSerializer serializer)
         {
             var jsonObject = JObject.Load(reader);
-            var webhookItem = jsonObject.ToObject<ProcessedEvent>(serializer);
+
+            //serialise based on the event type
+            JToken eventName = null;
+            jsonObject.TryGetValue("event", StringComparison.CurrentCultureIgnoreCase, out eventName);
+
+            if(!TypeMapping.ContainsKey(eventName.ToString()))
+                throw new NotImplementedException(string.Format("Event {0} is not implemented yet", eventName));
+
+            Type type = TypeMapping[eventName.ToString()];
+            WebhookEventBase webhookItem = (WebhookEventBase)jsonObject.ToObject(type, serializer);
+
 
             AddUnmappedPropertiesAsUnique(webhookItem, jsonObject);
 

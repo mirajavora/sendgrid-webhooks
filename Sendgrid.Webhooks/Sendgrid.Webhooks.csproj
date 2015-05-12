@@ -48,6 +48,7 @@
     <Compile Include="Converters\EpochToDateTimeConverter.cs" />
     <Compile Include="Converters\GenericListCreationJsonConverter.cs" />
     <Compile Include="Converters\WebhookCategoryConverter.cs" />
+    <Compile Include="Events\BounceEvent.cs" />
     <Compile Include="Events\DeliveryEventBase.cs" />
     <Compile Include="Events\EngagementEventBase.cs" />
     <Compile Include="Events\ProcessedEvent.cs" />
