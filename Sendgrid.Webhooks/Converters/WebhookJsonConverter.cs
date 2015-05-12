@@ -15,6 +15,15 @@ namespace Sendgrid.Webhooks.Converters
         {
             {"processed", typeof (ProcessedEvent)},
             {"bounce", typeof (BounceEvent)},
+            {"click", typeof (ClickEvent)},
+            {"deferred", typeof (DeferredEvent)},
+            {"delivered", typeof (DeliveryEvent)},
+            {"dropped", typeof (DroppedEvent)},
+            {"open", typeof (OpenEvent)},
+            {"spamreport", typeof (SpamReportEvent)},
+            {"unsubscribe", typeof (UnsubscribeEvent)},
+            {"group_resubscribe", typeof (GroupResubscribeEvent)},
+            {"group_unsubscribe", typeof (GroupUnsubscribeEvent)}
         };
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

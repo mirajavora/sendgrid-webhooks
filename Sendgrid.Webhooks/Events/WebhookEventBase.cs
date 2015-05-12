@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json.Converters;
 using Sendgrid.Webhooks.Converters;
 using Sendgrid.Webhooks.Service;
 
@@ -13,7 +14,7 @@ namespace Sendgrid.Webhooks.Events
             UniqueParameters = new Dictionary<string, string>();
         }
 
-        [JsonProperty("event")]
+        [JsonProperty("event"), JsonConverter(typeof(StringEnumConverter))]
         public WebhookEventType EventType { get; set; }
 
         [JsonProperty("email")]
