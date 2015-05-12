@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime;
 using NUnit.Framework;
 using Sendgrid.Webhooks.Events;
 using Sendgrid.Webhooks.Service;
@@ -32,12 +31,105 @@ namespace Sendgrid.Webhooks.Tests
         }
 
         [Test]
+        public void Parse_Click_Event()
+        {
+            var json = new JsonEventBuilder().AppendClick().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(ClickEvent));
+            var bounceEvent = result[0] as ClickEvent;
+            Assert.AreEqual("http://yourdomain.com/blog/news.html", bounceEvent.Url);
+        }
+
+        [Test]
+        public void Parse_Deferred_Event()
+        {
+            var json = new JsonEventBuilder().AppendDeferred().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(DeferredEvent));
+            var deferredEvent = result[0] as DeferredEvent;
+            Assert.AreEqual("400 Try again", deferredEvent.Response);
+            Assert.AreEqual("10", deferredEvent.Attempts);
+        }
+
+        [Test]
+        public void Parse_Delivered_Event()
+        {
+            var json = new JsonEventBuilder().AppendDelivered().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(DeliveryEvent));;
+        }
+
+        [Test]
+        public void Parse_Drop_Event()
+        {
+            var json = new JsonEventBuilder().AppendDrop().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(DroppedEvent));
+            var dropEvent = result[0] as DroppedEvent;
+            Assert.AreEqual("Bounced Address", dropEvent.Reason);
+        }
+
+        [Test]
+        public void Parse_Open_Event()
+        {
+            var json = new JsonEventBuilder().AppendOpen().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(OpenEvent)); ;
+        }
+
+
+        [Test]
         public void Parse_Processed_Event()
         {
             var json = new JsonEventBuilder().AppendProcessed().Build();
             var result = parser.ParseEvents(json);
 
             AssertCommonProperties(result, typeof(ProcessedEvent));
+        }
+
+        [Test]
+        public void Parse_SpamReport_Event()
+        {
+            var json = new JsonEventBuilder().AppendSpamReport().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(SpamReportEvent));
+        }
+
+        [Test]
+        public void Parse_Unsubscribe_Event()
+        {
+            var json = new JsonEventBuilder().AppendUnsubscribe().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(UnsubscribeEvent));
+        }
+
+        [Test]
+        public void Parse_Group_Resubscribe_Event()
+        {
+            var json = new JsonEventBuilder().AppendGroupResubscribe().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(GroupResubscribeEvent));
+            var castEvent = result[0] as GroupResubscribeEvent;
+            Assert.AreEqual(1, castEvent.GroupId);
+        }
+
+        [Test]
+        public void Parse_Group_Unsubscribe_Event()
+        {
+            var json = new JsonEventBuilder().AppendGroupUnsubscribe().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(GroupUnsubscribeEvent));
+            var castEvent = result[0] as GroupUnsubscribeEvent;
+            Assert.AreEqual(1, castEvent.GroupId);
         }
 
         private void AssertCommonProperties(IList<WebhookEventBase> result, Type expectedType)
