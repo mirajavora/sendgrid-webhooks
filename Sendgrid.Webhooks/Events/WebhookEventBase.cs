@@ -8,6 +8,11 @@ namespace Sendgrid.Webhooks.Events
 {
     public abstract class WebhookEventBase
     {
+        public WebhookEventBase()
+        {
+            UniqueParameters = new Dictionary<string, string>();
+        }
+
         [JsonProperty("event")]
         public WebhookEventType EventType { get; set; }
 
@@ -19,5 +24,7 @@ namespace Sendgrid.Webhooks.Events
 
         [JsonProperty("timestamp"), JsonConverter(typeof(EpochToDateTimeConverter))]
         public DateTime TimeStamp { get; set; }
+
+        public IDictionary<string, string> UniqueParameters { get; set; }
     }
 }

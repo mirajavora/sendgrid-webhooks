@@ -31,7 +31,7 @@ namespace Sendgrid.Webhooks.Tests
 
         private void AppendString(string item)
         {
-            if (builder.Length != 0)
+            if (builder.Length > 1)
                 builder.Append(",");
 
             builder.Append(item);
