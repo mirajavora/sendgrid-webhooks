@@ -3,6 +3,9 @@
 # Sendgrid Webhooks
 A library to parse event webhooks from Sendgrid. Contains Parser and a set of strongly typed DTOs. It supports all available webhook events, unique arguments and categories.
 
+# Download via NuGet
+[TODO]
+
 # Usage
 
 Declare WebhookParser and call ParseEvents. This takes in string as JSON received from the HTTP POST callback.
@@ -12,7 +15,8 @@ Declare WebhookParser and call ParseEvents. This takes in string as JSON receive
 
 The parser returns a polymorphic IList of WebhookEventBase, where each item is a strongly typed Webhook Event.
 
-	var webhookEvent = 
+	var webhookEvent = events[0];
+	Console.WriteLine(event.EventType
 
 
 *Example JSON*
@@ -54,3 +58,5 @@ The WebhookParser looks at each unique property within the JSON and adds it to a
 	var value = event.UniqueParameters["customerAccountNumber"];
 	Console.WriteLine(value); // outputs 55555
 
+# Overriding JsonConverter
+The parser supports a custom JsonConverter as an argument. This theoretically allows you to write your own custom DTOs, as long as they are still based on the WebhookEventBase.
