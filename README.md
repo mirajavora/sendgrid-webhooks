@@ -1,10 +1,13 @@
-[![Build Status](https://travis-ci.org/mirajavora/sendgrid-webhooks.png)](https://travis-ci.org/mirajavora/sendgrid-webhooks)
+[![Travis Build Status](https://travis-ci.org/mirajavora/sendgrid-webhooks.png)](https://travis-ci.org/mirajavora/sendgrid-webhooks)
+[![MyGet Build Status](https://www.myget.org/BuildSource/Badge/sendgrid-webhooks?identifier=2700371c-9f1e-464e-8fef-ae69b8a64015)](https://www.myget.org/)
 
 # Sendgrid Webhooks
 A library to parse event webhooks from Sendgrid. Contains Parser and a set of strongly typed DTOs. It supports all available webhook events, unique arguments and categories.
 
 # Download via NuGet
-[TODO]
+Add the following package feed to your package manager:
+
+https://www.myget.org/F/sendgrid-webhooks/api/v2
 
 # Usage
 
