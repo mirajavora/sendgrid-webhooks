@@ -18,9 +18,19 @@ Declare WebhookParser and call ParseEvents. This takes in string as JSON receive
 
 The parser returns a polymorphic IList of WebhookEventBase, where each item is a strongly typed Webhook Event.
 
-	var webhookEvent = events[0];
-	Console.WriteLine(event.EventType
+*Example Properties*
 
+	var webhookEvent = events[0];
+	
+	//shared base properties
+	webhookEvent.EventType; //Enum - type of the event as enum
+	webhookEvent.Categories; //IList<string> - list of categories assigned ot the event
+	webhookEvent.TimeStamp; //DateTime - datetime of the event converted from unix time
+	webhookEvent.UniqueParameters; //IDictionary<string, string> - map of key-value unique parameters
+	
+	//event specific properties
+	var clickEvent = webhookEvent as ClickEvent; //cast to the parent based on EventType
+	clickEvent.Url; //string - url on what the user has clicked
 
 *Example JSON*
 
