@@ -2,7 +2,7 @@
 
 namespace Sendgrid.Webhooks.Events
 {
-    public class EngagementEventBase : WebhookEventBase
+    public abstract class EngagementEventBase : WebhookEventBase
     {
         [JsonProperty("useragent")]
         public string UserAgent { get; set; }
