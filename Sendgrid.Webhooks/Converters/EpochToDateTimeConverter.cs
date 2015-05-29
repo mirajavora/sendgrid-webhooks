@@ -19,7 +19,7 @@ namespace Sendgrid.Webhooks.Converters
         {
             long timestamp = (long) reader.Value;
 
-            return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(timestamp);
+            return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp);
         }
     }
 }

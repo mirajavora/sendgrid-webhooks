@@ -149,6 +149,9 @@ namespace Sendgrid.Webhooks.Tests
             Assert.IsNotNull(webhookEvent.Category);
             Assert.AreEqual(2, webhookEvent.Category.Count);
             CollectionAssert.AreEquivalent(webhookEvent.Category, new[] {"category1", "category2"});
+
+            //has correct timestamp
+            Assert.AreEqual(new DateTime(2009, 08, 11, 0, 0, 0, DateTimeKind.Utc), webhookEvent.TimeStamp);
         }
     }
 }
