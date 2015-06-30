@@ -64,7 +64,7 @@ namespace Sendgrid.Webhooks.Converters
                 if(KnownProperties.Contains(o.Key))
                     continue;
 
-                webhookEvent.UniqueParameters.Add(o.Key, o.Value.ToString());
+                webhookEvent.UniqueParameters.Add(o.Key, o.Value == null ? null : o.Value.ToString());
             }
         }
     }
