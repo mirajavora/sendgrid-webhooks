@@ -50,6 +50,9 @@
     <Compile Include="WebhookParserTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Events\bounce-null.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Events\group_resubscribe.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

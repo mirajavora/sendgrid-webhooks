@@ -1,0 +1,10 @@
+﻿{
+   "email": "some-random-email@gsk.com",
+   "timestamp": 1434967476,
+   "status": "5.7.999",
+   "reason": "550 5.7.999 The user is inactive and not accepting messages.",
+   "sg_message_id": null,
+   "sg_event_id": "NACvbycnSaqiDkAjDMGAkw",
+   "type": "blocked",
+   "event": "bounce"
+}

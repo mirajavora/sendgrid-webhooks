@@ -31,6 +31,17 @@ namespace Sendgrid.Webhooks.Tests
         }
 
         [Test]
+        public void Parse_BounceWithNullArgs_EventIsStillParsed()
+        {
+            var json = new JsonEventBuilder().AppendBounceNull().Build();
+            var result = parser.ParseEvents(json);
+
+            var bounceEvent = result[0] as BounceEvent;
+            Assert.AreEqual("550 5.7.999 The user is inactive and not accepting messages.", bounceEvent.Reason);
+            Assert.AreEqual("blocked", bounceEvent.BounceType);
+        }
+
+        [Test]
         public void Parse_Click_Event()
         {
             var json = new JsonEventBuilder().AppendClick().Build();

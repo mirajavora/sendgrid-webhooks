@@ -28,6 +28,12 @@ namespace Sendgrid.Webhooks.Tests
             return this;
         }
 
+        public JsonEventBuilder AppendBounceNull()
+        {
+            AppendString(ReadContent("bounce-null.json"));
+            return this;
+        }
+
         public JsonEventBuilder AppendClick()
         {
             AppendString(ReadContent("click.json"));
