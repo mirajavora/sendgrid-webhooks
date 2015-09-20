@@ -8,16 +8,21 @@ namespace Sendgrid.Webhooks.Service
 {
     public class WebhookParser
     {
-        private JsonConverter[] converters; 
+        private readonly JsonConverter[] _converters; 
 
         public WebhookParser()
         {
-            converters = new JsonConverter[] { new WebhookJsonConverter() };
+            _converters = new JsonConverter[] { new WebhookJsonConverter() };
+        }
+
+        public WebhookParser(JsonConverter[] converters)
+        {
+            _converters = converters;
         }
 
         public IList<WebhookEventBase> ParseEvents(String json)
         {
-            return JsonConvert.DeserializeObject<IList<WebhookEventBase>>(json, converters);
+            return JsonConvert.DeserializeObject<IList<WebhookEventBase>>(json, _converters);
         }
     }
 }
