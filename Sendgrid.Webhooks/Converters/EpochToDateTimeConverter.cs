@@ -5,6 +5,8 @@ namespace Sendgrid.Webhooks.Converters
 {
     public class EpochToDateTimeConverter : JsonConverter
     {
+        private static readonly DateTime EpochDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         public override bool CanConvert(Type objectType)
         {
             return objectType == typeof(DateTime);
@@ -12,15 +14,21 @@ namespace Sendgrid.Webhooks.Converters
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value != null)
-                serializer.Serialize(writer, ((DateTime)value).ToString());
+            if (value == null)
+                return;
+
+            var date = (DateTime) value;
+            var diff = date - EpochDate;
+
+            var secondsSinceEpoch = (int) diff.TotalSeconds;
+            serializer.Serialize(writer, secondsSinceEpoch);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            long timestamp = (long) reader.Value;
+            var timestamp = (long) reader.Value;
 
-            return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp);
+            return EpochDate.AddSeconds(timestamp);
         }
     }
 }
