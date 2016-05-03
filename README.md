@@ -51,7 +51,7 @@ clickEvent.Url; // string - URL on what the user has clicked
 ```
 
 # Unique Arguments
-Is the ability to pass in additional arguments along with the message. This is mainly to add meta-data to the message. [Find out more in the documentation](https://sendgrid.com/docs/API_Reference/SMTP_API/unique_arguments.html).
+Is the ability to pass in additional arguments along with the message. This is mainly to add metadata to the message. [Find out more in the documentation](https://sendgrid.com/docs/API_Reference/SMTP_API/unique_arguments.html).
 ```json
 {
   "unique_args": {
@@ -64,7 +64,7 @@ Is the ability to pass in additional arguments along with the message. This is m
   }
 }
 ```
-The WebhookParser looks at each unique property within the JSON and adds it to a UniqueParameters dictionary. 
+The `WebhookParser` looks at each unique property within the JSON and adds it to a UniqueParameters dictionary. 
 ```csharp
 var value = event.UniqueParameters["customerAccountNumber"];
 Console.WriteLine(value); // outputs 55555
