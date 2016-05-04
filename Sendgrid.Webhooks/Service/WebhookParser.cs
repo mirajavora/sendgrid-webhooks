@@ -12,7 +12,7 @@ namespace Sendgrid.Webhooks.Service
 
         public WebhookParser()
         {
-            _converters = new List<JsonConverter>{ new WebhookJsonConverter() };
+            _converters = new List<JsonConverter> { new WebhookJsonConverter() };
         }
 
         public WebhookParser(IEnumerable<JsonConverter>converters)
@@ -20,7 +20,7 @@ namespace Sendgrid.Webhooks.Service
             _converters = converters;
         }
 
-        public IList<WebhookEventBase> ParseEvents(String json)
+        public IEnumerable<WebhookEventBase> ParseEvents(string json)
         {
             return JsonConvert.DeserializeObject<IEnumerable<WebhookEventBase>>(json, _converters);
         }
