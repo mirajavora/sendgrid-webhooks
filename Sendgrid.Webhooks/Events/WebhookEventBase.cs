@@ -24,7 +24,7 @@ namespace Sendgrid.Webhooks.Events
         public IList<string> Category { get; set; }
 
         [JsonProperty("timestamp"), JsonConverter(typeof(EpochToDateTimeConverter))]
-        public DateTime TimeStamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         public IDictionary<string, string> UniqueParameters { get; set; }
     }
