@@ -33,7 +33,7 @@ namespace Sendgrid.Webhooks.Events
         /// </summary>
         Click,
         /// <summary>
-        /// Report	Recipient marked message as spam.
+        /// Recipient marked message as spam.
         /// </summary>
         SpamReport,
         /// <summary>
