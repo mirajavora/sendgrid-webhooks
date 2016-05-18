@@ -13,22 +13,22 @@ namespace Sendgrid.Webhooks.Converters
 
         private static readonly IDictionary<string, Type> TypeMapping = new Dictionary<string, Type>()
         {
-            {"processed", typeof (ProcessedEvent)},
-            {"bounce", typeof (BounceEvent)},
-            {"click", typeof (ClickEvent)},
-            {"deferred", typeof (DeferredEvent)},
-            {"delivered", typeof (DeliveryEvent)},
-            {"dropped", typeof (DroppedEvent)},
-            {"open", typeof (OpenEvent)},
-            {"spamreport", typeof (SpamReportEvent)},
-            {"unsubscribe", typeof (UnsubscribeEvent)},
-            {"group_resubscribe", typeof (GroupResubscribeEvent)},
-            {"group_unsubscribe", typeof (GroupUnsubscribeEvent)}
+            {"processed", typeof(ProcessedEvent)},
+            {"bounce", typeof(BounceEvent)},
+            {"click", typeof(ClickEvent)},
+            {"deferred", typeof(DeferredEvent)},
+            {"delivered", typeof(DeliveryEvent)},
+            {"dropped", typeof(DroppedEvent)},
+            {"open", typeof(OpenEvent)},
+            {"spamreport", typeof(SpamReportEvent)},
+            {"unsubscribe", typeof(UnsubscribeEvent)},
+            {"group_resubscribe", typeof(GroupResubscribeEvent)},
+            {"group_unsubscribe", typeof(GroupUnsubscribeEvent)}
         };
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException("The webhook json converter does not support write");
+            throw new NotImplementedException("The webhook JSON converter does not support write operations.");
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
@@ -40,13 +40,14 @@ namespace Sendgrid.Webhooks.Converters
             JToken eventName = null;
             jsonObject.TryGetValue("event", StringComparison.CurrentCultureIgnoreCase, out eventName);
 
-            if(!TypeMapping.ContainsKey(eventName.ToString()))
-                throw new NotImplementedException(string.Format("Event {0} is not implemented yet", eventName));
+            if (!TypeMapping.ContainsKey(eventName.ToString()))
+                throw new NotImplementedException(string.Format("Event {0} is not implemented yet.", eventName));
 
             Type type = TypeMapping[eventName.ToString()];
             WebhookEventBase webhookItem = (WebhookEventBase)jsonObject.ToObject(type, serializer);
 
             AddUnmappedPropertiesAsUnique(webhookItem, jsonObject);
+            
             return webhookItem;
         }
 
@@ -61,7 +62,7 @@ namespace Sendgrid.Webhooks.Converters
 
             foreach (var o in dict)
             {
-                if(KnownProperties.Contains(o.Key))
+                if (KnownProperties.Contains(o.Key))
                     continue;
 
                 webhookEvent.UniqueParameters.Add(o.Key, o.Value == null ? null : o.Value.ToString());
