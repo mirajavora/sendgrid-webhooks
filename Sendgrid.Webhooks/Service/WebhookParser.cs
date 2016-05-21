@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Sendgrid.Webhooks.Converters;
@@ -17,6 +17,10 @@ namespace Sendgrid.Webhooks.Service
 
         public WebhookParser(JsonConverter[] converters)
         {
+            if (converters == null) {
+                throw new ArgumentNullException(nameof(converters));
+            }
+            
             _converters = converters;
         }
 
