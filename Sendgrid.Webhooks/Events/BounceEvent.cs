@@ -9,5 +9,8 @@ namespace Sendgrid.Webhooks.Events
 
         [JsonProperty("type")]
         public string BounceType { get; set; }
+
+        [JsonProperty("status")]
+        public string BounceStatus { get; set; }
     }
 }
