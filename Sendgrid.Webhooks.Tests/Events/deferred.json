@@ -1,12 +1,15 @@
 ﻿{
-  "response":"400 Try again",
-  "sg_event_id":"sendgrid_internal_event_id",
-  "sg_message_id":"sendgrid_internal_message_id",
-  "event":"deferred",
-  "email":"email@example.com",
-  "timestamp":1249948800,
-  "smtp-id":"<original-smtp-id@domain.com>",
-  "unique_arg_key":"unique_arg_value",
-  "category":["category1", "category2"],
-  "attempt":"10"
+  "response": "400 Try again",
+  "sg_event_id": "sendgrid_internal_event_id",
+  "sg_message_id": "sendgrid_internal_message_id",
+  "event": "deferred",
+  "email": "email@example.com",
+  "timestamp": 1249948800,
+  "smtp-id": "<original-smtp-id@domain.com>",
+  "unique_arg_key": "unique_arg_value",
+  "category": [ "category1", "category2" ],
+  "attempt": "10",
+  "ip": "127.0.0.1",
+  "tls": "0",
+  "cert_err": "0"
 }

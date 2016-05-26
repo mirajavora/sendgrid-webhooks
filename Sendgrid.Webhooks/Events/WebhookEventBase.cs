@@ -14,6 +14,12 @@ namespace Sendgrid.Webhooks.Events
             UniqueParameters = new Dictionary<string, string>();
         }
 
+        [JsonProperty("sg_event_id")]
+        public string SendGridEventID { get; set; }
+
+        [JsonProperty("sg_message_id")]
+        public string SendGridMessageID { get; set; }
+
         [JsonProperty("event"), JsonConverter(typeof(StringEnumConverter))]
         public WebhookEventType EventType { get; set; }
 
@@ -25,6 +31,17 @@ namespace Sendgrid.Webhooks.Events
 
         [JsonProperty("timestamp"), JsonConverter(typeof(EpochToDateTimeConverter))]
         public DateTime Timestamp { get; set; }
+
+        [JsonProperty("ip")]
+        public string Ip { get; set; }
+
+        [JsonConverter(typeof(JsonBoolConverter))]
+        [JsonProperty("tls")]
+        public bool TLSUsed { get; set; }
+
+        [JsonConverter(typeof(JsonBoolConverter))]
+        [JsonProperty("cert_err")]
+        public bool CertificateError { get; set; }
 
         public IDictionary<string, string> UniqueParameters { get; set; }
     }

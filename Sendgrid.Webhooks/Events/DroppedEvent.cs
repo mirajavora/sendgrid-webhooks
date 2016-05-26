@@ -6,5 +6,8 @@ namespace Sendgrid.Webhooks.Events
     {
         [JsonProperty("reason")]
         public string Reason { get; set; }
+
+        [JsonProperty("status")]
+        public string DropStatus { get; set; }
     }
 }

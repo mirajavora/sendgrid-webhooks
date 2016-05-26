@@ -6,5 +6,17 @@ namespace Sendgrid.Webhooks.Events
     {
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        [JsonProperty("url_offset")]
+        public UrlOffset UrlOffset { get; set; }
+    }
+
+    public class UrlOffset
+    {
+        [JsonProperty("index")]
+        public int Index { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }
