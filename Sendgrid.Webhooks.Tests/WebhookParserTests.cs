@@ -28,6 +28,7 @@ namespace Sendgrid.Webhooks.Tests
             var bounceEvent = result[0] as BounceEvent;
             Assert.AreEqual("500 No Such User", bounceEvent.Reason);
             Assert.AreEqual("bounce", bounceEvent.BounceType);
+            Assert.AreEqual("5.0.0", bounceEvent.BounceStatus);
         }
 
         [Test]

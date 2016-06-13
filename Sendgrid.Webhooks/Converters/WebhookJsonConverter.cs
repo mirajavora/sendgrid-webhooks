@@ -10,7 +10,7 @@ namespace Sendgrid.Webhooks.Converters
     public class WebhookJsonConverter : JsonConverter
     {
         private static readonly string[] KnownProperties = {"event", "email", "category", "timestamp", "ip", "useragent", "type", 
-                                                               "reason", "url", "url_offset"};
+                                                               "reason", "status", "url", "url_offset"};
 
         private static readonly IDictionary<string, Type> TypeMapping = new Dictionary<string, Type>()
         {
