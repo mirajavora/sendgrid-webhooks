@@ -129,6 +129,18 @@ namespace Sendgrid.Webhooks.Tests
         }
 
         [Test]
+        public void Parse_Processed_EventWithSentAt()
+        {
+            var json = new JsonEventBuilder().AppendProcessedWithSendAt().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(ProcessedEvent));
+            var processedEvent = result[0] as ProcessedEvent;
+            Assert.IsNotNull(processedEvent.SendAt);
+            Assert.AreEqual(new DateTime(2009, 08, 11, 0, 3, 20, DateTimeKind.Utc), processedEvent.SendAt);
+        }
+
+        [Test]
         public void Parse_SpamReport_Event()
         {
             var json = new JsonEventBuilder().AppendSpamReport().Build();

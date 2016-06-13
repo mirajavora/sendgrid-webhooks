@@ -22,6 +22,12 @@ namespace Sendgrid.Webhooks.Tests
             return this;
         }
 
+        public JsonEventBuilder AppendProcessedWithSendAt()
+        {
+            AppendString(ReadContent("processed-with-sendat.json"));
+            return this;
+        }
+
         public JsonEventBuilder AppendBounce()
         {
             AppendString(ReadContent("bounce.json"));

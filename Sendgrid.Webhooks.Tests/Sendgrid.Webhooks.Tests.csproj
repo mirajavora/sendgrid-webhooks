@@ -67,6 +67,9 @@
     <None Include="Events\group_resubscribe.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Events\processed-with-sendat.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Events\spamreport.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
