@@ -46,6 +46,12 @@ namespace Sendgrid.Webhooks.Tests
             return this;
         }
 
+        public JsonEventBuilder AppendClickWithUrlOffset()
+        {
+            AppendString(ReadContent("click-with-urloffset.json"));
+            return this;
+        }
+
         public JsonEventBuilder AppendDeferred()
         {
             AppendString(ReadContent("deferred.json"));

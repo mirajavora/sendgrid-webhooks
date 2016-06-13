@@ -61,6 +61,7 @@
     <Compile Include="Events\ProcessedEvent.cs" />
     <Compile Include="Events\SpamReportEvent.cs" />
     <Compile Include="Events\UnsubscribeEvent.cs" />
+    <Compile Include="Events\UrlOffset.cs" />
     <Compile Include="Events\WebhookEventBase.cs" />
     <Compile Include="Events\WebhookEventType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -58,8 +58,22 @@ namespace Sendgrid.Webhooks.Tests
             var result = parser.ParseEvents(json);
 
             AssertCommonProperties(result, typeof(ClickEvent));
-            var bounceEvent = result[0] as ClickEvent;
-            Assert.AreEqual("http://yourdomain.com/blog/news.html", bounceEvent.Url);
+            var clickEvent = result[0] as ClickEvent;
+            Assert.AreEqual("http://yourdomain.com/blog/news.html", clickEvent.Url);
+        }
+
+        [Test]
+        public void Parse_Click_EventWithUrlOffset()
+        {
+            var json = new JsonEventBuilder().AppendClickWithUrlOffset().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(ClickEvent));
+            var clickEvent = result[0] as ClickEvent;
+            Assert.AreEqual("http://yourdomain.com/blog/news.html", clickEvent.Url);
+            Assert.IsNotNull(clickEvent);
+            Assert.AreEqual(0, clickEvent.UrlOffset.Index);
+            Assert.AreEqual("html", clickEvent.UrlOffset.Type);
         }
 
         [Test]
