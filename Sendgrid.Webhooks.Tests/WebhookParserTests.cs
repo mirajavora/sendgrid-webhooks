@@ -42,6 +42,16 @@ namespace Sendgrid.Webhooks.Tests
         }
 
         [Test]
+        public void Parse_BounceWithExtraProperties_IpIsPresent()
+        {
+            var json = new JsonEventBuilder().AppendBounceWithIp().Build();
+            var result = parser.ParseEvents(json);
+
+            var bounceEvent = result[0] as BounceEvent;
+            Assert.AreEqual("192.254.114.26", bounceEvent.Ip);
+        }
+
+        [Test]
         public void Parse_Click_Event()
         {
             var json = new JsonEventBuilder().AppendClick().Build();

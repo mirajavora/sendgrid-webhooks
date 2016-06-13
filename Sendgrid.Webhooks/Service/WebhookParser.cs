@@ -18,7 +18,7 @@ namespace Sendgrid.Webhooks.Service
         public WebhookParser(JsonConverter[] converters)
         {
             if (converters == null) {
-                throw new ArgumentNullException(nameof(converters));
+                throw new ArgumentNullException("converters");
             }
             
             _converters = converters;

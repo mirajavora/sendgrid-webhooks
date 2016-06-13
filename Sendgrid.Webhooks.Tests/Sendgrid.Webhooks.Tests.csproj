@@ -55,6 +55,9 @@
     <Compile Include="WebhookParserTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Events\bounce-with-ip.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Events\bounce-null.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
