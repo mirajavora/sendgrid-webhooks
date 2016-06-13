@@ -28,6 +28,7 @@ namespace Sendgrid.Webhooks.Tests
             var bounceEvent = result[0] as BounceEvent;
             Assert.AreEqual("500 No Such User", bounceEvent.Reason);
             Assert.AreEqual("bounce", bounceEvent.BounceType);
+            Assert.AreEqual("5.0.0", bounceEvent.BounceStatus);
         }
 
         [Test]
@@ -94,7 +95,22 @@ namespace Sendgrid.Webhooks.Tests
             var json = new JsonEventBuilder().AppendDelivered().Build();
             var result = parser.ParseEvents(json);
 
-            AssertCommonProperties(result, typeof(DeliveryEvent));;
+            AssertCommonProperties(result, typeof(DeliveryEvent));
+            var deliveryEvent = result[0] as DeliveryEvent;
+            Assert.IsFalse(deliveryEvent.CertificateError);
+            Assert.IsFalse(deliveryEvent.Tls);
+        }
+
+        [Test]
+        public void Parse_Delivered_EventWithTlsAndCertError()
+        {
+            var json = new JsonEventBuilder().AppendDeliveredWithTlsAndCertError().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(DeliveryEvent));
+            var deliveryEvent = result[0] as DeliveryEvent;
+            Assert.IsTrue(deliveryEvent.CertificateError);
+            Assert.IsTrue(deliveryEvent.Tls);
         }
 
         [Test]
@@ -125,6 +141,18 @@ namespace Sendgrid.Webhooks.Tests
             var result = parser.ParseEvents(json);
 
             AssertCommonProperties(result, typeof(ProcessedEvent));
+        }
+
+        [Test]
+        public void Parse_Processed_EventWithSentAt()
+        {
+            var json = new JsonEventBuilder().AppendProcessedWithSendAt().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(ProcessedEvent));
+            var processedEvent = result[0] as ProcessedEvent;
+            Assert.IsNotNull(processedEvent.SendAt);
+            Assert.AreEqual(new DateTime(2009, 08, 11, 0, 3, 20, DateTimeKind.Utc), processedEvent.SendAt);
         }
 
         [Test]

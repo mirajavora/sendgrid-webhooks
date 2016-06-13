@@ -22,6 +22,12 @@ namespace Sendgrid.Webhooks.Tests
             return this;
         }
 
+        public JsonEventBuilder AppendProcessedWithSendAt()
+        {
+            AppendString(ReadContent("processed-with-sendat.json"));
+            return this;
+        }
+
         public JsonEventBuilder AppendBounce()
         {
             AppendString(ReadContent("bounce.json"));
@@ -61,6 +67,12 @@ namespace Sendgrid.Webhooks.Tests
         public JsonEventBuilder AppendDelivered()
         {
             AppendString(ReadContent("delivered.json"));
+            return this;
+        }
+
+        public JsonEventBuilder AppendDeliveredWithTlsAndCertError()
+        {
+            AppendString(ReadContent("delivered-with-tlsanderror.json"));
             return this;
         }
 
