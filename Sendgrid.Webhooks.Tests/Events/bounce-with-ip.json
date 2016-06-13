@@ -1,0 +1,14 @@
+﻿{
+    "ip": "192.254.114.26",
+    "status": "550",
+    "sg_event_id": "8U38shR9QrmsYLtQo6E78w",
+    "reason": "550 Requested action not taken: mailbox unavailable ",
+    "sg_message_id": "uOYErh-oR9-SfDNO8pxrEQ.filter0436p1mdw1.24482.57532993C.0",
+    "tls": 1,
+    "event": "bounce",
+    "email": "xxxxxx@yyyy.com",
+    "timestamp": 1465067926,
+    "smtp-id": "<uOYErh-oR9-SfDNO8pxrEQ@ismtpd0001p1lon1.sendgrid.net>",
+    "type": "bounce",
+    "category": "EmailActivation"
+  }

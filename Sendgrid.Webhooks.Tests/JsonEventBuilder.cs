@@ -34,6 +34,12 @@ namespace Sendgrid.Webhooks.Tests
             return this;
         }
 
+        public JsonEventBuilder AppendBounceWithIp()
+        {
+            AppendString(ReadContent("bounce-with-ip.json"));
+            return this;
+        }
+
         public JsonEventBuilder AppendClick()
         {
             AppendString(ReadContent("click.json"));
