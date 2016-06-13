@@ -70,6 +70,12 @@ namespace Sendgrid.Webhooks.Tests
             return this;
         }
 
+        public JsonEventBuilder AppendDeliveredWithTlsAndCertError()
+        {
+            AppendString(ReadContent("delivered-with-tlsanderror.json"));
+            return this;
+        }
+
         public JsonEventBuilder AppendDrop()
         {
             AppendString(ReadContent("drop.json"));

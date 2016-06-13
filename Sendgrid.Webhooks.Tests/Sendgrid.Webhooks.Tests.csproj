@@ -49,6 +49,7 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="BooleanConverterTests.cs" />
     <Compile Include="EpochConverterTests.cs" />
     <Compile Include="JsonEventBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Events\click-with-urloffset.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Events\delivered-with-tlsanderror.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Events\group_resubscribe.json">

@@ -45,6 +45,7 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Converters\BooleanConverter.cs" />
     <Compile Include="Converters\EpochToDateTimeConverter.cs" />
     <Compile Include="Converters\GenericListCreationJsonConverter.cs" />
     <Compile Include="Converters\WebhookCategoryConverter.cs" />

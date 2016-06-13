@@ -95,7 +95,22 @@ namespace Sendgrid.Webhooks.Tests
             var json = new JsonEventBuilder().AppendDelivered().Build();
             var result = parser.ParseEvents(json);
 
-            AssertCommonProperties(result, typeof(DeliveryEvent));;
+            AssertCommonProperties(result, typeof(DeliveryEvent));
+            var deliveryEvent = result[0] as DeliveryEvent;
+            Assert.IsFalse(deliveryEvent.CertificateError);
+            Assert.IsFalse(deliveryEvent.Tls);
+        }
+
+        [Test]
+        public void Parse_Delivered_EventWithTlsAndCertError()
+        {
+            var json = new JsonEventBuilder().AppendDeliveredWithTlsAndCertError().Build();
+            var result = parser.ParseEvents(json);
+
+            AssertCommonProperties(result, typeof(DeliveryEvent));
+            var deliveryEvent = result[0] as DeliveryEvent;
+            Assert.IsTrue(deliveryEvent.CertificateError);
+            Assert.IsTrue(deliveryEvent.Tls);
         }
 
         [Test]
