@@ -26,10 +26,18 @@ webhookEvent.EventType; // Enum - type of the event as enum
 webhookEvent.Categories; // IList<string> - list of categories assigned ot the event
 webhookEvent.TimeStamp; // DateTime - datetime of the event converted from Unix time
 webhookEvent.UniqueParameters; // IDictionary<string, string> - map of key-value unique parameters
+
+//All delivery events (deliver, bounce, deferred) also contain
+var deliveryEvent = webhookEvent as DeliveryEvent; // Cast to the parent based on EventType
+deliveryEvent.Ip; //string ip address used to send the event
+deliveryEvent.Tls; //bool whether or not TLS was used when sending the email
+deliveryEvent.CertificateError; //bool whether there was a certificate error on the receiving side
+deliveryEvent.SmtpId; //string id attached to the message by the originating system
 	
-// Event-specific properties
+// Event-specific properties for example
 var clickEvent = webhookEvent as ClickEvent; // Cast to the parent based on EventType
 clickEvent.Url; // string - URL on what the user has clicked
+clickEvent.UrlOffset; //UrlOffset - further info about what link was clicked
 ```
 *Example JSON*
 ```json
