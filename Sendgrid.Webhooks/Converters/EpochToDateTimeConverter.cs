@@ -26,8 +26,7 @@ namespace Sendgrid.Webhooks.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var timestamp = (long) reader.Value;
-
+            var timestamp = Convert.ToDouble(reader.Value);
             return EpochDate.AddSeconds(timestamp);
         }
     }
