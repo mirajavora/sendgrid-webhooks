@@ -38,6 +38,16 @@ namespace Sendgrid.Webhooks.Tests
         }
 
         [Test]
+        public void ReadJson_Double_ConvertsToDate()
+        {
+            var reader = new JTokenReader(new JValue((double)123.555));
+            reader.Read();
+            var result = _converter.ReadJson(reader, typeof(long), null, new JsonSerializer());
+
+            Assert.AreEqual(new DateTime(1970, 1, 1, 0, 2, 3, 555), result);
+        }
+
+        [Test]
         public void WriteJson_Date_ConvertsToEpoch()
         {
             var stringBuilder = new StringBuilder();
