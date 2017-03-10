@@ -1,4 +1,4 @@
-[![Travis Build Status](https://travis-ci.org/mirajavora/sendgrid-webhooks.png)](https://travis-ci.org/mirajavora/sendgrid-webhooks)
+[![Travis Build Status](https://api.travis-ci.org/mirajavora/sendgrid-webhooks.svg?branch=master)](https://travis-ci.org/mirajavora/sendgrid-webhooks)
 
 # Sendgrid Webhooks
 A library to parse event webhooks from Sendgrid. Contains Parser and a set of strongly typed DTOs. It supports all available webhook events, unique arguments and categories.
