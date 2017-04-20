@@ -1,4 +1,5 @@
 ﻿{
+  "sg_event_id":"sendgrid_internal_event_id",
   "sg_message_id":"sendgrid_internal_message_id",
   "email":"email@example.com",
   "timestamp":1249948800,

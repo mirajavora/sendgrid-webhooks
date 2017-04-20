@@ -3,8 +3,8 @@
    "timestamp": 1434967476,
    "status": "5.7.999",
    "reason": "550 5.7.999 The user is inactive and not accepting messages.",
-   "sg_message_id": null,
-   "sg_event_id": "NACvbycnSaqiDkAjDMGAkw",
+   "sg_event_id":"sendgrid_internal_event_id",
+   "sg_message_id":"sendgrid_internal_message_id",
    "type": "blocked",
    "event": "bounce"
 }

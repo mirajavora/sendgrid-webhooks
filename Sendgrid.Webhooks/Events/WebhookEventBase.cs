@@ -14,6 +14,12 @@ namespace Sendgrid.Webhooks.Events
             UniqueParameters = new Dictionary<string, string>();
         }
 
+        [JsonProperty("sg_message_id")]
+        public string SgMessageId { get; set; }
+
+        [JsonProperty("sg_event_id")]
+        public string SgEventId { get; set; }
+
         [JsonProperty("event"), JsonConverter(typeof(StringEnumConverter))]
         public WebhookEventType EventType { get; set; }
 
