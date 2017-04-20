@@ -204,6 +204,12 @@ namespace Sendgrid.Webhooks.Tests
             Assert.IsNotNull(webhookEvent);
             Assert.IsTrue(webhookEvent.GetType() == expectedType, "Expected type of: {0}", expectedType);
 
+            //has sg_message_id
+            Assert.AreEqual("sendgrid_internal_message_id", webhookEvent.SgMessageId);
+
+            //has sg_event_id
+            Assert.AreEqual("sendgrid_internal_event_id", webhookEvent.SgEventId);
+
             //has unique keys
             Assert.IsTrue(webhookEvent.UniqueParameters.ContainsKey("unique_arg_key"));
             Assert.AreEqual("unique_arg_value", webhookEvent.UniqueParameters["unique_arg_key"]);
@@ -211,7 +217,7 @@ namespace Sendgrid.Webhooks.Tests
             //has categories
             Assert.IsNotNull(webhookEvent.Category);
             Assert.AreEqual(2, webhookEvent.Category.Count);
-            CollectionAssert.AreEquivalent(webhookEvent.Category, new[] {"category1", "category2"});
+            CollectionAssert.AreEquivalent(webhookEvent.Category, new[] { "category1", "category2" });
 
             //has correct timestamp
             Assert.AreEqual(new DateTime(2009, 08, 11, 0, 0, 0, DateTimeKind.Utc), webhookEvent.Timestamp);
