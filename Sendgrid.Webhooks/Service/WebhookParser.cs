@@ -8,14 +8,14 @@ namespace Sendgrid.Webhooks.Service
 {
     public class WebhookParser
     {
-        private readonly JsonConverter[] _converters; 
+        private readonly IEnumerable<JsonConverter>_converters; 
 
         public WebhookParser()
         {
-            _converters = new JsonConverter[] { new WebhookJsonConverter() };
+            _converters = new List<JsonConverter> { new WebhookJsonConverter() };
         }
 
-        public WebhookParser(JsonConverter[] converters)
+        public WebhookParser(IEnumerable<JsonConverter>converters)
         {
             if (converters == null) {
                 throw new ArgumentNullException("converters");
@@ -24,9 +24,9 @@ namespace Sendgrid.Webhooks.Service
             _converters = converters;
         }
 
-        public IList<WebhookEventBase> ParseEvents(String json)
+        public IEnumerable<WebhookEventBase> ParseEvents(string json)
         {
-            return JsonConvert.DeserializeObject<IList<WebhookEventBase>>(json, _converters);
+            return JsonConvert.DeserializeObject<IEnumerable<WebhookEventBase>>(json, _converters);
         }
     }
 }
