@@ -13,7 +13,7 @@ namespace Sendgrid.Webhooks.Tests
         public JsonEventBuilder()
         {
             builder = new StringBuilder("[");
-            baseDirectory = Path.Combine(GetAssemblyDirectory().Parent.FullName, "Events");
+            baseDirectory = Path.Combine(GetAssemblyDirectory().FullName, "Events");
         }
 
         public JsonEventBuilder AppendProcessed()
@@ -136,7 +136,7 @@ namespace Sendgrid.Webhooks.Tests
         //move out to helper
         private static DirectoryInfo GetAssemblyDirectory()
         {
-            var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            var codeBase = AppContext.BaseDirectory;
             var uri = new UriBuilder(codeBase);
             var path = Uri.UnescapeDataString(uri.Path);
             return new DirectoryInfo(path);
