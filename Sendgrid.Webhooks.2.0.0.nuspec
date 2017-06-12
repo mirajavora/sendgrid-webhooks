@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Sendgrid.Webhooks</id>
-    <version>1.2.1</version>
-    <authors>Mira Javora,Andy McCready,Brian Petersen</authors>
+    <version>2.0.0</version>
+    <authors>Mira Javora,Andy McCready,Brian Petersen,Matthew Glace</authors>
     <projectUrl>https://github.com/mirajavora/sendgrid-webhooks</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A library to parse event webhooks from Sendgrid. Contains Parser and a set of strongly typed DTOs. It supports all available webhook events, unique arguments and categories.</description>
     <tags>sendgrid,webhooks,email</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="5.0.8" />
+      <dependency id="Newtonsoft.Json" version="10.0.2" />
     </dependencies>
   </metadata>
 </package>
