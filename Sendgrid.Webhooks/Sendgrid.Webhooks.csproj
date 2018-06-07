@@ -5,6 +5,7 @@
     <IsPackable>true</IsPackable>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
+    <FrameworkPathOverride Condition=" '$(OS)' == 'Unix' and '$(TargetFramework)' == 'net40'">/usr/lib/mono/4.0/</FrameworkPathOverride>
 
     <!-- NuGet package -->
     <Title>Sendgrid.Webhooks</Title>
