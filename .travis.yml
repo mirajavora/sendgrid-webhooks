@@ -1,10 +1,10 @@
 language: csharp
 dotnet: 2.0.0
 env:
-  - CONFIGURATION=Release
-  - DOTNET_REFERENCE_ASSEMBLIES_PATH=/usr/lib/mono/xbuild-frameworks
+  - CONFIGURATION=Release DOTNET_REFERENCE_ASSEMBLIES_PATH=/usr/lib/mono/xbuild-frameworks
 install:
   - dotnet restore
 script:
+  - dotnet build
   - dotnet test Sendgrid.Webhooks.Tests/Sendgrid.Webhooks.Tests.csproj
   - dotnet pack
