@@ -5,7 +5,6 @@
     <IsPackable>true</IsPackable>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
-    <IsTestProject>false</IsTestProject>
     <FrameworkPathOverride Condition=" '$(OS)' == 'Unix' and '$(TargetFramework)' == 'net40'">/usr/lib/mono/4.5/</FrameworkPathOverride>
 
     <!-- NuGet package -->
