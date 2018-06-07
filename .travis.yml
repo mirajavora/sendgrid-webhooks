@@ -6,5 +6,5 @@ env:
 install:
   - dotnet restore
 script:
-  - dotnet test
+  - dotnet test Sendgrid.Webhooks.Tests/Sendgrid.Webhooks.Tests.csproj
   - dotnet pack
