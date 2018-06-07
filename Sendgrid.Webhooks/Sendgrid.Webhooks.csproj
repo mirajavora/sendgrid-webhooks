@@ -5,7 +5,8 @@
     <IsPackable>true</IsPackable>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
-    <FrameworkPathOverride Condition=" '$(OS)' == 'Unix' and '$(TargetFramework)' == 'net40'">/usr/lib/mono/4.0/</FrameworkPathOverride>
+    <IsTestProject>false</IsTestProject>
+    <FrameworkPathOverride Condition=" '$(OS)' == 'Unix' and '$(TargetFramework)' == 'net40'">/usr/lib/mono/4.5/</FrameworkPathOverride>
 
     <!-- NuGet package -->
     <Title>Sendgrid.Webhooks</Title>
@@ -16,10 +17,6 @@
     <RepositoryUrl>https://github.com/mirajavora/sendgrid-webhooks.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
-    <Reference Include="System" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
