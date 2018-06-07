@@ -2,7 +2,7 @@ language: csharp
 solution: Sendgrid.Webhooks.sln
 install:
   - nuget restore Sendgrid.Webhooks.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  #- nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Release Sendgrid.Webhooks.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./Sendgrid.Webhooks.Tests/bin/Release/Sendgrid.Webhooks.Tests.dll
+  - xbuild /p:Configuration=Release /t:Pack Sendgrid.Webhooks.sln
+  #- mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./Sendgrid.Webhooks.Tests/bin/Release/Sendgrid.Webhooks.Tests.dll
