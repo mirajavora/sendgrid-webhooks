@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Sendgrid.Webhooks.Events;
@@ -10,7 +9,7 @@ namespace Sendgrid.Webhooks.Converters
     public class WebhookJsonConverter : JsonConverter
     {
         //these will be filtered out from the UniqueParams
-        private static readonly string[] KnownProperties = {"event", "email", "category", "timestamp", "ip", "useragent", "type", 
+        private static readonly new List<string> KnownProperties = new List<string>{"event", "email", "category", "timestamp", "ip", "useragent", "type", 
                                                                "reason", "status", "url", "url_offset", "send_at", "tls", "cert_err" };
 
         private static readonly IDictionary<string, Type> TypeMapping = new Dictionary<string, Type>()
