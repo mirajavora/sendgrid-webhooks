@@ -1,90 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A01761F3-3B82-4097-B32A-AC3F79B739B1}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sendgrid.Webhooks</RootNamespace>
-    <AssemblyName>Sendgrid.Webhooks</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\SolutionInfo.cs">
-      <Link>SolutionInfo.cs</Link>
-    </Compile>
-    <Compile Include="Converters\BooleanConverter.cs" />
-    <Compile Include="Converters\EpochToDateTimeConverter.cs" />
-    <Compile Include="Converters\GenericListCreationJsonConverter.cs" />
-    <Compile Include="Converters\WebhookCategoryConverter.cs" />
-    <Compile Include="Events\BounceEvent.cs" />
-    <Compile Include="Events\ClickEvent.cs" />
-    <Compile Include="Events\DeferredEvent.cs" />
-    <Compile Include="Events\DeliveryEvent.cs" />
-    <Compile Include="Events\DeliveryEventBase.cs" />
-    <Compile Include="Events\DroppedEvent.cs" />
-    <Compile Include="Events\EngagementEventBase.cs" />
-    <Compile Include="Events\GroupUnsubscribeEvent.cs" />
-    <Compile Include="Events\GroupResubscribeEvent.cs" />
-    <Compile Include="Events\OpenEvent.cs" />
-    <Compile Include="Events\ProcessedEvent.cs" />
-    <Compile Include="Events\SpamReportEvent.cs" />
-    <Compile Include="Events\UnsubscribeEvent.cs" />
-    <Compile Include="Events\UrlOffset.cs" />
-    <Compile Include="Events\WebhookEventBase.cs" />
-    <Compile Include="Events\WebhookEventType.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Converters\WebhookJsonConverter.cs" />
-    <Compile Include="Service\WebhookParser.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
