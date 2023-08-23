@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net40;netstandard1.0</TargetFrameworks>
+    <TargetFrameworks>net40;netstandard1.0;netstandard2.0</TargetFrameworks>
     <IsPackable>true</IsPackable>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
@@ -10,7 +10,7 @@
     <!-- NuGet package -->
     <Title>Sendgrid.Webhooks</Title>
     <Description>A library to parse event webhooks from Sendgrid. Contains Parser and a set of strongly typed DTOs. It supports all available webhook events, unique arguments and categories.</Description>
-    <PackageVersion>2.0.0</PackageVersion>
+    <PackageVersion>2.0.1</PackageVersion>
     <Authors>Mira Javora,Andy McCready,Brian Petersen,m0sa</Authors>
     <PackageProjectUrl>https://github.com/mirajavora/sendgrid-webhooks</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mirajavora/sendgrid-webhooks.git</RepositoryUrl>
